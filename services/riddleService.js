@@ -1,15 +1,16 @@
-import * as dalRiddle2 from '../dal/dalRiddle.js'
+// import { readFile, writeFile } from 'node:fs/promises'
+import * as dalRiddle2 from '../dal/dalriddle.js'
 const path = '../dataBase/riddles.txt'
 import * as x from './helperService.js'
 import promptSync from 'prompt-sync'
 const prompt = promptSync()
 
-export async function readAllRiddles(path) {
-    const riddles = await x.readText(path)
+export async function readAllRiddles() {
+    const riddles = await x.readText()
     console.log(riddles)
 }
 
-export function addRiddle(path) {
+export function addRiddle() {
     const newRiddle = {}
     newRiddle["level"] = prompt("enter level")
     newRiddle["name"] = prompt("enter name")
@@ -17,12 +18,12 @@ export function addRiddle(path) {
     newRiddle["correctAnswer"] = prompt("enter correctAnswer")
     newRiddle["timer"] = prompt("enter timer")
     newRiddle["hint"] = prompt("enter hint")
-    x.creat(path, newRiddle)
+    x.creat(newRiddle)
 }
 
-export async function updeatRid(path) {
+export async function updeatRid() {
     const objById = prompt("enter id riddle you whant to change")
-    let y = await x.readText(path)
+    let y = await x.readText()
     for (let element of y) {
         if (element.id == objById) {
             element["taskDescription"] = prompt("enter taskDescription updeat")
@@ -30,13 +31,13 @@ export async function updeatRid(path) {
             element["hint"] = prompt("enter hint updeat")
         }
     }
-    await dalRiddle2.writeRiddle(path,y)
+    await dalRiddle2.writeRiddle(y)
 }
 
-export function deletRiddle(path) {
+export function deletRiddle() {
     const objById = prompt("enter id object to you whant delet")
-    x.delet(path, objById)
+    x.delet(objById)
 }
 
 
-addRiddle(path)
+addRiddle()
