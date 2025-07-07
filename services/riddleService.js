@@ -1,5 +1,6 @@
-import { readFile, writeFile } from 'node:fs/promises'
-const path = '../texts/riddles.txt'
+// import { readFile, writeFile } from 'node:fs/promises'
+// import * as dalRiddle from '../dal/dalRiddle.js'
+const path = '../dataBase/riddles.txt'
 import * as x from './helperService.js'
 import promptSync from 'prompt-sync'
 const prompt = promptSync()
@@ -30,10 +31,13 @@ export async function updeatRid(path) {
             element["hint"] = prompt("enter hint updeat")
         }
     }
-    await writeFile(path, JSON.stringify(y, null, 2))
+    await dalRiddle.writeRiddle(path,y)
 }
 
 export function deletRiddle(path) {
     const objById = prompt("enter id object to you whant delet")
     x.delet(path, objById)
 }
+
+
+addRiddle(path)
