@@ -3,7 +3,7 @@ const input = promptSync();
 export default class Riddel{
     constructor(riddle){
     Object.assign(this,riddle)
-    this.start = 0
+    this.start = new Date()
     this.GetHint = false
     this.addTime = 0
     }
