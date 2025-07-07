@@ -1,13 +1,14 @@
 import { readFile, writeFile } from 'node:fs/promises'
-const path = '../texts/player.txt'
+import path from 'node:path'
+const filePath =  '../dataBase/Player.txt'
 
 
- export async function readPlayer(path){
-    const players = await readFile(path,"utf8")
+ export async function readPlayer(){
+    const players = await readFile(filePath,"utf8")
     const jsonPlayers = JSON.parse(players)
     return jsonPlayers
 }
 
-export async function writePlayer(path,players){
-    return await writeFile(path, JSON.stringify(players,null,2))
+export async function writePlayer(players){
+    return await writeFile(filePath, JSON.stringify(players,null,2))
 }

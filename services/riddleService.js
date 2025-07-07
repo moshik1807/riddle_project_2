@@ -1,5 +1,4 @@
-// import { readFile, writeFile } from 'node:fs/promises'
-// import * as dalRiddle from '../dal/dalRiddle.js'
+import * as dalRiddle2 from '../dal/dalRiddle.js'
 const path = '../dataBase/riddles.txt'
 import * as x from './helperService.js'
 import promptSync from 'prompt-sync'
@@ -31,7 +30,7 @@ export async function updeatRid(path) {
             element["hint"] = prompt("enter hint updeat")
         }
     }
-    await dalRiddle.writeRiddle(path,y)
+    await dalRiddle2.writeRiddle(path,y)
 }
 
 export function deletRiddle(path) {
