@@ -1,5 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises'
 const path = '../texts/player.txt'
+
+
  export async function readPlayer(path){
     const players = await readFile(path,"utf8")
     const jsonPlayers = JSON.parse(players)
