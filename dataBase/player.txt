@@ -1,18 +1,6 @@
 [
   {
-    "name": "s",
-    "everegTime": "0"
-  },
-  {
-    "name": "mosh",
-    "everegTime": "0.00"
-  },
-  {
-    "name": "mo",
-    "everegTime": "0.01"
-  },
-  {
-    "name": "moshe",
-    "everegTime": "001"
+    "name": "dd",
+    "everegTime": "0.2"
   }
 ]

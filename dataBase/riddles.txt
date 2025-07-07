@@ -61,5 +61,21 @@
     "correctAnswer": "52",
     "timer": "60",
     "hint": "Let the digits be a and b, so the number is 10a + b. Set up a system of equations."
+  },
+  {
+    "level": null,
+    "name": null,
+    "taskDescription": null,
+    "correctAnswer": null,
+    "timer": null,
+    "hint": null
+  },
+  {
+    "level": null,
+    "name": null,
+    "taskDescription": null,
+    "correctAnswer": null,
+    "timer": null,
+    "hint": null
   }
 ]
