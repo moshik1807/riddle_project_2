@@ -1,5 +1,9 @@
 [
   {
+    "name": "s",
+    "everegTime": "0"
+  },
+  {
     "name": "mosh",
     "everegTime": "0.00"
   },
@@ -10,9 +14,5 @@
   {
     "name": "moshe",
     "everegTime": "001"
-  },
-  {
-    "name": "m",
-    "everegTime": "111"
   }
 ]

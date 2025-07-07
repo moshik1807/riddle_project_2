@@ -4,10 +4,8 @@ import {readFile,writeFile} from "node:fs/promises"
 
 export async function readText(path){
     try{
-        //לשים לב מה קורה במערך ריק שחוזר
         const file = await readFile(path,'utf8')
         const fileJson = JSON.parse(file)
-        // console.log(fileJson)
         return fileJson
     }
     catch(err){
