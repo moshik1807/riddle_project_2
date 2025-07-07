@@ -1,0 +1,65 @@
+[
+  {
+    "id": 3,
+    "level": "easy",
+    "name": "riddel:3",
+    "taskDescription": "What is 75 / 3?  ",
+    "correctAnswer": "25",
+    "timer": "10000",
+    "hint": "How many times does 3 fit into 75? Try 3 into 30, then 3 into 45."
+  },
+  {
+    "id": 4,
+    "level": "medium",
+    "name": "riddel:3",
+    "taskDescription": " According to the following expression '5 + 2x = 4-3x', what is the value of x? ",
+    "correctAnswer": "9",
+    "timer": "30",
+    "hint": "Try moving all x terms to one side and the numbers to the other side."
+  },
+  {
+    "id": 5,
+    "level": "medium",
+    "name": "riddel:4",
+    "taskDescription": "According to the following expression '7x - 4 = 3x + 12', what is the value of x?",
+    "correctAnswer": "4",
+    "timer": "30",
+    "hint": "Move all terms with x to one side and constants to the other."
+  },
+  {
+    "id": 6,
+    "level": "medium",
+    "name": "riddel:5",
+    "taskDescription": "According to the following expression '6(x - 1) = 2x + 12', what is the value of x?",
+    "correctAnswer": "3",
+    "timer": "30",
+    "hint": "First, distribute the 6 on the left side before solving."
+  },
+  {
+    "id": 7,
+    "level": "hard",
+    "name": "riddel:6",
+    "taskDescription": "If 2(x + 3) - 4 = x + 10, what is the value of x?",
+    "correctAnswer": "8",
+    "timer": "60",
+    "hint": "Start by distributing the 2 on the left side, then simplify both sides."
+  },
+  {
+    "id": 8,
+    "level": "hard",
+    "name": "riddel:7",
+    "taskDescription": "The sum of three consecutive even numbers is 72. What is the smallest of the three numbers?",
+    "correctAnswer": "22",
+    "timer": "60",
+    "hint": "Let the numbers be x, x+2, and x+4. Add them and solve for x."
+  },
+  {
+    "id": 9,
+    "level": "hard",
+    "name": "riddel:8",
+    "taskDescription": "A two-digit number is such that the sum of its digits is 11, and reversing the digits gives a number that is 27 more than the original. What is the original number?",
+    "correctAnswer": "52",
+    "timer": "60",
+    "hint": "Let the digits be a and b, so the number is 10a + b. Set up a system of equations."
+  }
+]
