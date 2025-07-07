@@ -1,6 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises'
-const path = '../texts/player.txt'
+const path = '../dataBase/player.txt'
 import * as x from './helperService.js'
+import * as dalPlayer from '../dal/dalPlayer.js'
 
 //מדפיס את כל השחקנים
 export async function readAllPlayers(path){
@@ -11,8 +12,7 @@ export async function readAllPlayers(path){
 
 //בודק אם השחקן נמצא ברשימה ומחזיר ערך בוליאני
 export async function cheakIfPlayerInText(path,player){
-    const file = await readFile(path,"utf8")
-    const players = JSON.parse(file)
+    const players = await dalPlayer.readPlayer(path)
     for (let i = 0; i < players.length; i++) {
         if (players[i].name === player.name) {
         return {exists: true, index: i}
@@ -25,14 +25,16 @@ export async function cheakIfPlayerInText(path,player){
 //"אם השחקן עקף את הזמן שלו אז מוחק אותו מרשימת השחקנים ומחזיר "אמת
 export async function addPlayer(path,player){   
      try{
-        const delet = false
-        const players = await readFile(path,'utf8')
-        const playersJson = JSON.parse(players)
+        let delet = true
+        const players = await dalPlayer.readPlayer(path)
         const cheak = await cheakIfPlayerInText(path,player)
         if(cheak.exists){
-            if(player.everegTime < playersJson[cheak.index].everegTime){
-                playersJson.splice(cheak.index, 1)
-                delet = true
+            if(player.everegTime <= players[cheak.index].everegTime){
+                players.splice(cheak.index, 1)
+                await dalPlayer.writePlayer(path, players)
+            }
+            else{
+                delet = false
             }
         }
         return delet
@@ -44,32 +46,31 @@ export async function addPlayer(path,player){
 
 
 //דוחף שחקן למיקום מתאים ברשימת השחקנים לפי הזמן הממוצע שלו
-export async function pushPlayer(player){
-    const players = await readFile(path,'utf8')
-    const playersJson = JSON.parse(players)
+export async function pushPlayer(path,player){
+    const players = await dalPlayer.readPlayer(path)
     let add = false
-        for (let i = 0; i < playersJson.length; i++) {
-            if (player.everegTime < playersJson[i].everegTime) {
-                playersJson.splice(i, 0, player)
+        for (let i = 0; i < players.length; i++) {
+            if (player.everegTime < players[i].everegTime) {
+                players.splice(i, 0, player)
                 add = true
                 break
             }
         }
         if(!add){
-            playersJson.push(player)
+            players.push(player)
         }
-        await writeFile(path, JSON.stringify(playersJson,null,2))
+        await dalPlayer.writePlayer(path,players)
 }
 
 
 //מנהל את תהליך הוספת\עריכת שחקן
 export async function playerMeneger(path,player){
     const x = await addPlayer(path,player)
-    if(!x){
-       pushPlayer(player) 
+    if(x){
+       await pushPlayer(path,player) 
     }
 }
-   
+playerMeneger(path,{"name":"dd","everegTime":"0.3"})
 
 
 
