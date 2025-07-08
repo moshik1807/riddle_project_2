@@ -1,6 +1,4 @@
 import { readFile, writeFile } from 'node:fs/promises'
-// import path from 'node:path'
-// const filePath =  '../dataBase/Player.txt'
 import path from 'node:path'
 import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
