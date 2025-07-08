@@ -27,7 +27,7 @@ function Game(arrayRiddle, player) {
         ridd.endTime(player)
     }
     player.printTimes()
-    // importFile.playerService.playerMeneger(player)
+    importFile.playerService.playerMeneger(player)
 }
 
 

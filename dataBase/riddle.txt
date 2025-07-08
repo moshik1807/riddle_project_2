@@ -1,1 +1,47 @@
-[]
+[
+  {
+    "id": 1,
+    "level": "easy",
+    "name": "Even Sum",
+    "taskDescription": "What is the sum of 2 + 4 + 6?",
+    "correctAnswer": "12",
+    "timer": "30",
+    "hint": "They're all even numbers."
+  },
+  {
+    "id": 2,
+    "level": "easy",
+    "name": "Simple Subtraction",
+    "taskDescription": "What is 15 - 7?",
+    "correctAnswer": "8",
+    "timer": "30",
+    "hint": "Think of removing 7 apples from 15."
+  },
+  {
+    "id": 3,
+    "level": "medium",
+    "name": "Squares",
+    "taskDescription": "What is the square of 9?",
+    "correctAnswer": "81",
+    "timer": "30",
+    "hint": "9 × 9"
+  },
+  {
+    "id": 4,
+    "level": "medium",
+    "name": "Triangle Mystery",
+    "taskDescription": "A triangle has angles of 60° and 60°. What’s the third?",
+    "correctAnswer": "60",
+    "timer": "30",
+    "hint": "Sum of triangle angles?"
+  },
+  {
+    "id": 5,
+    "level": "hard",
+    "name": "Factorial Challenge",
+    "taskDescription": "What is 4! (4 factorial)?",
+    "correctAnswer": "24",
+    "timer": "45",
+    "hint": "4×3×2×1"
+  }
+]
