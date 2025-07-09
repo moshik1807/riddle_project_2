@@ -69,7 +69,6 @@ export async function playerMeneger(player){
        await pushPlayer(player) 
     }
 }
-playerMeneger({"name":"dd","everegTime":"0.2"})
 
 
 
