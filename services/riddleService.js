@@ -8,6 +8,18 @@ const prompt = promptSync()
 export async function readAllRiddles() {
     const riddles = await x.readText()
     console.log(riddles)
+    return riddles
+}
+
+export async function readRiddleById(id){
+    const riddles = await x.readText()
+    let riddle
+    for(const e of riddles){
+        if(e.id == id){
+            riddle = e
+        }
+    }
+    return riddle
 }
 
 export function addRiddle() {
@@ -40,4 +52,3 @@ export function deletRiddle() {
 }
 
 
-addRiddle()

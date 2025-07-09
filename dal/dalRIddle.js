@@ -11,6 +11,8 @@ export async function readRiddle() {
     return jsonPlayers
 }
 
+
+
 export async function writeRiddle(players) {
     return await writeFile(filePath, JSON.stringify(players, null, 2))
 }
