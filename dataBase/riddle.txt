@@ -34,14 +34,5 @@
     "correctAnswer": "60",
     "timer": "30",
     "hint": "Sum of triangle angles?"
-  },
-  {
-    "id": 5,
-    "level": "hard",
-    "name": "Factorial Challenge",
-    "taskDescription": "What is 4! (4 factorial)?",
-    "correctAnswer": "24",
-    "timer": "45",
-    "hint": "4×3×2×1"
   }
 ]

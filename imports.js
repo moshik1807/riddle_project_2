@@ -6,5 +6,7 @@ export {Player}
 export {readText}
 import * as playerService from "./services/playerService.js";
 export {playerService}
-
-
+import * as riddleService from "./services/riddleService.js";
+export {riddleService}
+import * as dalriddle from "./dal/dalRIddle.js";
+export {dalriddle}
