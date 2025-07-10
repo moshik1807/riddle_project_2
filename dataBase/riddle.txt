@@ -25,14 +25,5 @@
     "correctAnswer": "81",
     "timer": "30",
     "hint": "9 × 9"
-  },
-  {
-    "id": 4,
-    "level": "aaaaaaaaaaaaaaaaaa",
-    "name": "aaaaaaaaaaaaaaaaaaaa",
-    "taskDescription": "zzzzzzzzzzzzzzzzzzzz",
-    "correctAnswer": "zzzzzzzzzzzzzzzzz",
-    "timer": "aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-    "hint": "zzzzzzzzzzzzzzzzzz"
   }
 ]
