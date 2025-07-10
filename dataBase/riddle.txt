@@ -28,11 +28,11 @@
   },
   {
     "id": 4,
-    "level": "medium",
-    "name": "Triangle Mystery",
-    "taskDescription": "A triangle has angles of 60° and 60°. What’s the third?",
-    "correctAnswer": "60",
-    "timer": "30",
-    "hint": "Sum of triangle angles?"
+    "level": "aaaaaaaaaaaaaaaaaa",
+    "name": "aaaaaaaaaaaaaaaaaaaa",
+    "taskDescription": "zzzzzzzzzzzzzzzzzzzz",
+    "correctAnswer": "zzzzzzzzzzzzzzzzz",
+    "timer": "aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "hint": "zzzzzzzzzzzzzzzzzz"
   }
 ]
