@@ -28,12 +28,12 @@ routerRiddle.post('/delete',(req,res)=>{
 
 routerRiddle.put('/updeate',async(req,res)=>{
     const riddles = await imports.riddleService.readAllRiddles()
-    const u = req.body
+    const updeatRiddle = req.body
     for(let e of riddles){
-        if(e.id == u.id){
-            e.taskDescription = u.taskDescription
-            e.correctAnswer = u.correctAnswer
-            e.hint = u.hint
+        if(e.id == updeatRiddle.id){
+            e.taskDescription = updeatRiddle.taskDescription
+            e.correctAnswer = updeatRiddle.correctAnswer
+            e.hint = updeatRiddle.hint
             break
         }
     }

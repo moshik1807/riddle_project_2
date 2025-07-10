@@ -8,7 +8,7 @@ routerPlayer.get('/getAll',async(req,res)=>{
 })
 
 routerPlayer.post('/updeatPlayers',async(req,res)=>{
-    const player = await req.body
+    const player = req.body
     imports.playerService.playerMeneger(player)
     res.end("updeat player")
 })
