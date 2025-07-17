@@ -1,4 +1,3 @@
-// import { readFile, writeFile } from 'node:fs/promises'
 import * as dalRiddle2 from '../dal/dalriddle.js'
 const path = '../dataBase/riddles.txt'
 import * as x from './helperService.js'

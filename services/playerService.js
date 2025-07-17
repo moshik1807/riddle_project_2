@@ -1,4 +1,3 @@
-// const  = '../dataBase/player.txt'
 import * as x from './helperService.js'
 import * as dalPlayer from '../dal/dalPlayer.js'
 
@@ -40,12 +39,14 @@ export async function addPlayer(player){
         }
         catch(err){
         console.log(err)
+        throw err
     }
 }
 
 
 //דוחף שחקן למיקום מתאים ברשימת השחקנים לפי הזמן הממוצע שלו
 export async function pushPlayer(player){
+    try{
     const players = await dalPlayer.readPlayer()
     let add = false
         for (let i = 0; i < players.length; i++) {
@@ -59,16 +60,24 @@ export async function pushPlayer(player){
             players.push(player)
         }
         await dalPlayer.writePlayer(players)
+    }
+    catch(err){
+        console.log(err)
+        throw err
+    }
 }
 
 
 //מנהל את תהליך הוספת\עריכת שחקן
 export async function playerMeneger(player){
+    try{
     const x = await addPlayer(player)
     if(x){
        await pushPlayer(player) 
+    }}
+    catch(err){
+        console.log(err)
+        throw err
     }
+
 }
-
-
-

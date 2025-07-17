@@ -1,4 +1,4 @@
-import * as dalRiddle1 from '../dal/dalriddle.js'
+import * as dalRiddle1 from '../dal/dalRiddle.js'
 
 export async function readText() {
     try {

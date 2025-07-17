@@ -1,5 +1,5 @@
-import * as imports from './imports.js'
-import * as helperService from './services/helperService.js'
+import * as imports from '../imports.js'
+import * as helperService from '../services/helperService.js'
 
 
 import express from 'express'
