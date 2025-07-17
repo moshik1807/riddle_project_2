@@ -9,6 +9,12 @@ export async function getAllRiddles(){
     return riddles
 }
 
+export async function getRiddlesByLevel(Level){
+    const riddles = await db.collection('riddles')
+    .find({level:Level}).toArray()
+    return riddles
+}
+
 export async function addRiddle(riddleObj){
     await db.collection('riddles')
     .insertOne(riddleObj)
