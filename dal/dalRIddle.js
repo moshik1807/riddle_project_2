@@ -1,18 +1,18 @@
-import { readFile, writeFile } from 'node:fs/promises'
-import path from 'node:path'
-import { fileURLToPath } from 'url'
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const filePath = path.resolve(__dirname, '../dataBase/riddle.txt')
+import { MongoClient } from "mongodb";
+import 'dotenv/config' 
+export const client = new MongoClient(process.env.MONGODB_URI)
 
-export async function readRiddle() {
-    const players = await readFile(filePath,"utf8")
-    const jsonPlayers = JSON.parse(players)
-    return jsonPlayers
+export async function connectToMongo(){
+    try{
+        await client.connect()
+        console.log('connect to db')
+    }
+    catch(error){
+        console.log(error)
+    }
 }
 
+export const db = client.db('riddle_project')
 
 
-export async function writeRiddle(players) {
-    return await writeFile(filePath, JSON.stringify(players, null, 2))
-}
+
