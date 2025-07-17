@@ -1,11 +1,11 @@
 import express from 'express'
-import * as imports from '../imports.js'
+import {playerMeneger} from '../services/playerService.js'
 const routerPlayer = express.Router()
 
-routerPlayer.get('/getAll', async (req, res) => {
-    const players = await imports.dalPlayer.readPlayer()
-    res.json(players)
-})
+// routerPlayer.get('/getAll', async (req, res) => {
+//     const players = await imports.dalPlayer.readPlayer()
+//     res.json(players)
+// })
 
 
 
@@ -13,7 +13,7 @@ routerPlayer.get('/getAll', async (req, res) => {
 routerPlayer.post('/updeatPlayers', async (req, res) => {
     try{
     const player = req.body
-    await imports.playerService.playerMeneger(player)
+    await playerMeneger(player)
     res.end("update player")
     }
     catch(err){

@@ -1,4 +1,4 @@
-import {connectToMongo,db} from '../dal/dalRiddle.js'
+import {connectToMongo,db} from '../dal/dalRIddle.js'
 import { ObjectId } from "mongodb"
 
 await connectToMongo()

@@ -1,83 +1,48 @@
-import * as x from './helperService.js'
-import * as dalPlayer from '../dal/dalPlayer.js'
+import { supabase } from '../dal/dalPlayer.js'
 
-//מדפיס את כל השחקנים
-export async function readAllPlayers(){
-   const riddles = await x.readText()
-   console.log(riddles)
-}
-
-
-//בודק אם השחקן נמצא ברשימה ומחזיר ערך בוליאני
-export async function cheakIfPlayerInText(player){
-    const players = await dalPlayer.readPlayer()
-    for (let i = 0; i < players.length; i++) {
-        if (players[i].name === player.name) {
-        return {exists: true, index: i}
-        }
+export async function checkPlayer(playerName) {
+    const { data, error } = await supabase
+        .from('players')
+        .select('*')
+        .eq('name', playerName)
+    if (error) {
+        throw new Error(error.message)
     }
-    return { exists: false }
+    return {bool:data.length > 0,player:data[0]}
 }
 
+function AverageTimeCheck(firstPlayer,lastPlayer) {
+    return firstPlayer.everegTime > lastPlayer.everegTime
+}
 
-//"אם השחקן עקף את הזמן שלו אז מוחק אותו מרשימת השחקנים ומחזיר "אמת
-export async function addPlayer(player){   
-     try{
-        let delet = true
-        const players = await dalPlayer.readPlayer()
-        const cheak = await cheakIfPlayerInText(player)
-        if(cheak.exists){
-            if(player.everegTime <= players[cheak.index].everegTime){
-                players.splice(cheak.index, 1)
-                await dalPlayer.writePlayer(players)
-            }
-            else{
-                delet = false
-            }
-        }
-        return delet
-        }
-        catch(err){
-        console.log(err)
-        throw err
+async function updatePlayer(player){
+    const {data,error} = await supabase
+    .from('players')
+    .update({everegTime:player.everegTime})
+    .eq('name',player.name)
+    if(error){
+        throw new Error(error.message)
+    }
+}
+
+async function addPlayer(player){
+    const {data,error} = await supabase
+    .from('players')
+    .insert([player])
+    if(error){
+        throw new Error(error.message)
     }
 }
 
 
-//דוחף שחקן למיקום מתאים ברשימת השחקנים לפי הזמן הממוצע שלו
-export async function pushPlayer(player){
-    try{
-    const players = await dalPlayer.readPlayer()
-    let add = false
-        for (let i = 0; i < players.length; i++) {
-            if (player.everegTime < players[i].everegTime) {
-                players.splice(i, 0, player)
-                add = true
-                break
-            }
-        }
-        if(!add){
-            players.push(player)
-        }
-        await dalPlayer.writePlayer(players)
-    }
-    catch(err){
-        console.log(err)
-        throw err
-    }
-}
-
-
-//מנהל את תהליך הוספת\עריכת שחקן
 export async function playerMeneger(player){
-    try{
-    const x = await addPlayer(player)
-    if(x){
-       await pushPlayer(player) 
-    }}
-    catch(err){
-        console.log(err)
-        throw err
+    const check = await checkPlayer(player.name)
+    if(check.bool){
+        if(AverageTimeCheck(check.player,player)){
+            await updatePlayer(player)
+        }
     }
-
+    else{
+        await addPlayer(player)
+    }
 }
