@@ -6,10 +6,6 @@ const PORT = 2123
 const server = express()
 server.use(json())
 
-server.use('/player', (req, res, next) => {
-    next();
-})
-
 server.use('/riddle',routerRiddle)
 server.use('/player',routerplayer)
 
