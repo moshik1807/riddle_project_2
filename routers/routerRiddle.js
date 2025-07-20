@@ -12,7 +12,6 @@ routerRiddle.get('/getAll',async(req,res)=>{
 })
 
 routerRiddle.get('/getByLevel',async(req,res)=>{
-    console.log(req.query)
     const riddles = await riddleService.getRiddlesByLevel(req.query.level)
     res.json(riddles)
 })

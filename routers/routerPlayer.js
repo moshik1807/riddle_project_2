@@ -7,7 +7,7 @@ routerPlayer.post('/updeatPlayers', async (req, res) => {
     try{
     const player = req.body
     await playerMeneger(player)
-    res.end("update player")
+    res.end("Player data saved successfully!")
     }
     catch(err){
         res.status(500).json({erroe:'error'})
