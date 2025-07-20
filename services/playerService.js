@@ -26,9 +26,10 @@ async function updatePlayer(player){
 }
 
 async function addPlayer(player){
+    const {name,everegTime} = player
     const {data,error} = await supabase
     .from('players')
-    .insert([player])
+    .insert([{name,everegTime}])
     if(error){
         throw new Error(error.message)
     }

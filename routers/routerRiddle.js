@@ -11,6 +11,11 @@ routerRiddle.get('/getAll',async(req,res)=>{
     res.json(riddles)
 })
 
+routerRiddle.get('/getByLevel',async(req,res)=>{
+    console.log(req.query)
+    const riddles = await riddleService.getRiddlesByLevel(req.query.level)
+    res.json(riddles)
+})
 
 routerRiddle.post('/create',(req,res)=>{
     riddleService.addRiddle(req.body)
@@ -25,6 +30,7 @@ routerRiddle.post('/delete',(req,res)=>{
 
 routerRiddle.put('/updeate',async(req,res)=>{
     riddleService.updeatRiddle(req.body)
+    res.end('updat')
 })
 
 export default routerRiddle
