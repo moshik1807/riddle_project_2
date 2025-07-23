@@ -1,5 +1,7 @@
 import { supabase } from '../dal/dalPlayer.js'
 
+
+
 export async function checkPlayer(playerName) {
     const { data, error } = await supabase
         .from('players')
@@ -47,3 +49,7 @@ export async function playerMeneger(player){
         await addPlayer(player)
     }
 }
+
+
+
+
