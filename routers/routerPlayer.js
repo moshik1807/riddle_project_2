@@ -1,19 +1,11 @@
 import express from 'express'
 import {playerMeneger} from '../services/playerService.js'
 import { addUser,checkPlayerInDB } from '../services/authService.js'
+import auth from '../services/authService.js'
 const routerPlayer = express.Router()
 
 
-routerPlayer.post('/updeatPlayers', async (req, res) => {
-    try{
-    const player = req.body
-    await playerMeneger(player)
-    res.send("Player data saved successfully!")
-    }
-    catch(err){
-        res.status(500).json({erroe:'error'})
-    }
-})
+
 
 routerPlayer.post('/signup',async(req,res)=>{
     try{
@@ -29,11 +21,25 @@ routerPlayer.post('/signup',async(req,res)=>{
 routerPlayer.post('/login',async(req,res)=>{
         const player = req.body
         const token = await checkPlayerInDB(player)
-        if(token){
-            res.send(token)
-        }else{
-            res.status(401).json({ error: 'Invalid credentials' })
-        }
+        console.log(token)
+        res.send({token})
 })
+
+
+
+routerPlayer.post('/updeatPlayers', auth(['user']),async (req, res) => {
+  try {
+    const {everageTime} = req.body;
+    const name = req.user.name
+    await playerMeneger({name:name,everageTime:everageTime});
+
+    res.send("Player data saved successfully!");
+  } catch (err) {
+    console.error('Error in /updeatPlayers:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
 
 export default routerPlayer
