@@ -1,8 +1,10 @@
 import { supabase } from '../dal/dalPlayer.js'
 
+
+
 export async function checkPlayer(playerName) {
     const { data, error } = await supabase
-        .from('players')
+        .from('users')
         .select('*')
         .eq('name', playerName)
     if (error) {
@@ -12,24 +14,14 @@ export async function checkPlayer(playerName) {
 }
 
 function AverageTimeCheck(firstPlayer,lastPlayer) {
-    return firstPlayer.everegTime > lastPlayer.everegTime
+    return firstPlayer.everageTime > lastPlayer.everageTime || firstPlayer.everageTime == null
 }
 
 async function updatePlayer(player){
     const {data,error} = await supabase
-    .from('players')
-    .update({everegTime:player.everegTime})
+    .from('users')
+    .update({everageTime:player.everageTime})
     .eq('name',player.name)
-    if(error){
-        throw new Error(error.message)
-    }
-}
-
-async function addPlayer(player){
-    const {name,everegTime} = player
-    const {data,error} = await supabase
-    .from('players')
-    .insert([{name,everegTime}])
     if(error){
         throw new Error(error.message)
     }
@@ -43,7 +35,8 @@ export async function playerMeneger(player){
             await updatePlayer(player)
         }
     }
-    else{
-        await addPlayer(player)
-    }
 }
+
+
+
+

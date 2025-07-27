@@ -1,10 +1,9 @@
 import * as riddleService from '../services/riddleService.js'
-
+import auth from '../services/authService.js'
 import express from 'express'
 
 
 const routerRiddle = express.Router()
-
 
 routerRiddle.get('/getAll',async(req,res)=>{
     const riddles = await riddleService.getAllRiddles()
@@ -16,18 +15,18 @@ routerRiddle.get('/getByLevel',async(req,res)=>{
     res.json(riddles)
 })
 
-routerRiddle.post('/create',(req,res)=>{
+routerRiddle.post('/create',auth(['admin']),(req,res)=>{
     riddleService.addRiddle(req.body)
     res.end("add")
 })
 
 
-routerRiddle.post('/delete',(req,res)=>{
+routerRiddle.post('/delete',auth(['admin']),(req,res)=>{
     riddleService.deleteRiddle(req.body.id)
     res.end("delete")
 })
 
-routerRiddle.put('/updeate',async(req,res)=>{
+routerRiddle.put('/updeate',auth(['admin']),async(req,res)=>{
     riddleService.updeatRiddle(req.body)
     res.end('updat')
 })
