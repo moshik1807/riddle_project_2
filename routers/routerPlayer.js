@@ -7,16 +7,22 @@ const routerPlayer = express.Router()
 
 
 
-routerPlayer.post('/signup',async(req,res)=>{
-    try{
-    const player = req.body
-    await addUser(player)
-    res.send("user signup")
-    }catch(err){
-        console.log(err)
-        res.send('error')
+routerPlayer.post('/signup', async (req, res) => {
+    try {
+        const player = req.body;
+        await addUser(player);
+        const token = await checkPlayerInDB(player);
+
+        if (token) {
+            res.json({ token });
+        } else {
+            res.status(401).json({ error: 'Invalid credentials' });
+        }
+    } catch (err) {
+        console.error('Signup error:', err);
+        res.status(500).json({ error: err.message || 'Internal server error' });
     }
-})
+});
 
 routerPlayer.post('/login',async(req,res)=>{
         const player = req.body
