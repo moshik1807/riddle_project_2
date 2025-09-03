@@ -65,9 +65,7 @@ export async function checkPlayerInDB(user){
 
 
 
-const auth = (roles) => (req, res, next) => {
-    //
-    
+const auth = (roles) => (req, res, next) => {    
     try {
         const authHeader = req.headers['authorization']
         if (!authHeader) return res.status(403).send('Unauthorized - no token')
